@@ -2513,7 +2513,7 @@ irmp_init (void)
         .pull_up_en = 1,
         .pull_down_en = 0,
     };
-    gpio_config(&ir_receive_io);
+    ESP_ERROR_CHECK(gpio_config(&ir_receive_io));
 
 #elif defined(__xtensa__)                                               // ESP8266
     pinMode(IRMP_BIT_NUMBER, INPUT);
