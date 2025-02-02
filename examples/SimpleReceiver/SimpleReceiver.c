@@ -36,6 +36,7 @@ void app_main(void)
                 irmp_data.address,
                 irmp_data.command,
                 irmp_data.flags);
+            gpio_set_level(LED_PIN, 0);
         }
         vTaskDelay(100 / portTICK_PERIOD_MS);
     }
