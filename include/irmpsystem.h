@@ -64,6 +64,7 @@
 #elif defined(ESP_PLATFORM)                                                         // ESP-IDF platform
 #include <stdint.h>
 #include "driver/gpio.h"
+#include "driver/ledc.h"
 #  define uint_fast8_t  uint8_t
 #  define uint_fast16_t uint16_t
 #elif defined(__xtensa__)                                                           // ESP8266 (Arduino)
