@@ -2506,14 +2506,10 @@ irmp_init (void)
     pinMode(IRMP_PIN, INPUT);
 
 #elif defined (ESP_PLATFORM)                                            // ESP-IDF
-    gpio_config_t ir_receive_io = {
-        .pin_bit_mask = (1ULL<<IRMP_BIT_NUMBER),
-        .mode = GPIO_MODE_INPUT,
-        .intr_type = GPIO_INTR_DISABLE,
-        .pull_up_en = 1,
-        .pull_down_en = 0,
-    };
-    ESP_ERROR_CHECK(gpio_config(&ir_receive_io));
+    gpio_reset_pin(IRMP_BIT_NUMBER);
+    gpio_set_direction(IRMP_BIT_NUMBER, GPIO_MODE_INPUT);
+    gpio_set_pull_mode(IRMP_BIT_NUMBER, GPIO_PULLUP_ONLY);
+    gpio_set_intr_type(IRMP_BIT_NUMBER, GPIO_INTR_DISABLE);
 
 #elif defined(__xtensa__)                                               // ESP8266
     pinMode(IRMP_BIT_NUMBER, INPUT);
